@@ -37,12 +37,12 @@ namespace ImagesXaf.Module.Win.Controllers
                 pEdit.Dock = System.Windows.Forms.DockStyle.Fill;
                 pEdit.Properties.AllowScrollViaMouseDrag = false;
                 pEdit.Properties.AllowScrollOnMouseWheel = DevExpress.Utils.DefaultBoolean.True;
-                pEdit.Properties.AllowZoomOnMouseWheel = DevExpress.Utils.DefaultBoolean.True;
+                pEdit.Properties.AllowZoomOnMouseWheel = DevExpress.Utils.DefaultBoolean.False;
                 pEdit.Properties.Appearance.BackColor = System.Drawing.Color.Black;
                 pEdit.Properties.Appearance.Options.UseBackColor = true;
-                pEdit.Properties.ShowMenu = true;
-                pEdit.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Never;
-                pEdit.Properties.ShowZoomSubMenu = DevExpress.Utils.DefaultBoolean.False;
+             //   pEdit.Properties.ShowMenu = true;
+             //   pEdit.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Never;
+                pEdit.Properties.ShowZoomSubMenu = DevExpress.Utils.DefaultBoolean.True;
                 pEdit.Properties.ZoomingOperationMode = DevExpress.XtraEditors.Repository.ZoomingOperationMode.MouseWheel;
 
             }

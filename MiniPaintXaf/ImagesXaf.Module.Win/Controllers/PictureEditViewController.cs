@@ -17,34 +17,64 @@ using System.Windows.Forms;
 
 namespace ImagesXaf.Module.Win.Controllers
 {
-    public class PictureEditViewController<DetailView> : PictureEditController<DetailView>
+    public class PictureEditViewController : ViewController<DetailView>
     {
 
+        private List<RectangleMarker> rectangleMarkers;
+        private string environmentPath;
+        private const string markerFileName = "Marker.xml";
 
-        //private string environmentPath;
-        //private const string markerFileName = "Marker.xml";
-
-        //Image mainImage = null;
-        //bool startPaint = false;
-        //Graphics graphics;
-        ////nullable int for storing Null value
-        //int? initX = null;
-        //int? initY = null;
-        //PointF ulCorner;
-
+        Image mainImage = null;
+        bool startPaint = false;
+        Graphics graphics;
+        //nullable int for storing Null value
+        int? initX = null;
+        int? initY = null;
+        PointF ulCorner;
+        XafPictureEdit pEdit;
         Osoba currentRec;
-        //Point mouseDownPoint = Point.Empty;
-        //Rectangle lasso = Rectangle.Empty;
-        //bool ZoomPercentChanged;
+        Point mouseDownPoint = Point.Empty;
+        Rectangle lasso = Rectangle.Empty;
+        bool ZoomPercentChanged;
 
         public PictureEditViewController()
         {
+
             TargetViewType = ViewType.DetailView;
+
             TargetObjectType = typeof(Osoba);
+        }
+
+        protected override void OnActivated()
+        {
+            base.OnActivated();
+            ((CompositeView)View).ItemsChanged += PictureditorController_ItemsChanged;
+            TryInitializePictureItem();
+
+
+
+          
+        }
+        protected override void OnDeactivated()
+        {
+            base.OnDeactivated();
+            ((CompositeView)View).ItemsChanged -= PictureditorController_ItemsChanged;
+        }
+
+
+        private void PictureditorController_ItemsChanged(Object sender, ViewItemsChangedEventArgs e)
+        {
+            if (e.ChangedType == ViewItemsChangedType.Added && e.Item.Id == "Photo")
+            {
+                TryInitializePictureItem();
+            }
+
+          
         }
 
         public void TryInitializePictureItem()
         {
+
             ImagePropertyEditor imageEditor = View.FindItem("Photo") as ImagePropertyEditor;
             if (imageEditor != null)
             {
@@ -59,33 +89,61 @@ namespace ImagesXaf.Module.Win.Controllers
             }
         }
 
-        protected override void OnActivated()
+        private void imageEditor_ControlCreated(object sender, EventArgs e)
         {
-            base.OnActivated();
-            ((CompositeView)View).ItemsChanged += PictureditorController_ItemsChanged;
-            TryInitializePictureItem();
-
-
+            InitPhotoEditor((ImagePropertyEditor)sender);
 
             currentRec = (Osoba)View.CurrentObject;
         }
-        protected override void OnDeactivated()
+
+        private void InitPhotoEditor(ImagePropertyEditor imageEditor)
         {
-            base.OnDeactivated();
-            ((CompositeView)View).ItemsChanged -= PictureditorController_ItemsChanged;
-        }
-
-
-
-        private void PictureditorController_ItemsChanged(Object sender, ViewItemsChangedEventArgs e)
-        {
-            if (e.ChangedType == ViewItemsChangedType.Added && e.Item.Id == "Photo")
+            rectangleMarkers = new List<RectangleMarker>();
+            var ctrl = imageEditor.Control;
+            pEdit = (XafPictureEdit)ctrl;
+            if (pEdit != null)
             {
-                TryInitializePictureItem();
+                pEdit.LoadCompleted += LoadCompleted;
+                pEdit.MouseClick += PEdit_Click;
+                //    pEdit.Paint += Paint;
+                pEdit.Cursor = System.Windows.Forms.Cursors.Default;
+             //   pEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+                pEdit.Properties.AllowScrollViaMouseDrag = false;
+                pEdit.Properties.AllowScrollOnMouseWheel = DevExpress.Utils.DefaultBoolean.True;
+                pEdit.Properties.AllowZoomOnMouseWheel = DevExpress.Utils.DefaultBoolean.True;
+                pEdit.Properties.Appearance.BackColor = System.Drawing.Color.Black;
+                pEdit.Properties.Appearance.Options.UseBackColor = true;
+                pEdit.Properties.ShowMenu = true;
+                pEdit.Properties.ShowScrollBars = true;
+                pEdit.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+                pEdit.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Never;
+                pEdit.Properties.ShowZoomSubMenu = DevExpress.Utils.DefaultBoolean.True;
+                pEdit.Properties.ZoomingOperationMode = DevExpress.XtraEditors.Repository.ZoomingOperationMode.MouseWheel;
+
             }
+
+        }
+
+        private void PEdit_Click(object sender, MouseEventArgs e)
+        {
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                AddMarker(e);
+            }
+            //AddMarker(e);
+            //AddMarker(e);
+            //AddMarker(e);
         }
 
 
+
+        private void AddMarker(MouseEventArgs e)
+        {
+            PictureEditViewInfo viewInfo = pEdit.GetViewInfo() as PictureEditViewInfo;
+            if (!viewInfo.PictureScreenBounds.Contains(e.Location)) return;
+            var marker = new RectangleMarker(pEdit, new Rectangle(e.X - 50, e.Y, 100, 100));
+            rectangleMarkers.Add(marker);
+        }
 
 
         private void Paint(object sender, PaintEventArgs e)
@@ -103,7 +161,7 @@ namespace ImagesXaf.Module.Win.Controllers
 
         }
 
-        void loadSavedMarkers()
+      void  loadSavedMarkers()
         {
             foreach (var opis in currentRec.OpisZdjeciaCollection)
             {
@@ -126,9 +184,30 @@ namespace ImagesXaf.Module.Win.Controllers
 
         }
 
+        private void UpdateGraphics()
+        {
+            //graphics = pEdit.CreateGraphics();
+            //mainImage = pEdit.Image;
 
+            //ulCorner = new PointF(0, 0);
+            //if (mainImage != null && graphics != null)
+            //{
+            //    graphics.DrawImage(mainImage, 0, 0, pEdit.Width, pEdit.Height);
+            //}
+            //if (mainImage != null && graphics != null)
+            //{
+            //    foreach (var opis in currentRec.OpisZdjeciaCollection)
+            //    {
+            //        Pen pen = new Pen(Color.Red, 3);
+            //        graphics.DrawEllipse(pen, opis.XPos - 50, opis.YPos - 50, 100, 100);
+            //    }
+            //}
+        }
 
- 
+        private void LoadCompleted(object sender, EventArgs e)
+        {
+            UpdateGraphics();
+        }
 
         private void Invalidated(object sender, InvalidateEventArgs e)
         {

@@ -21,10 +21,10 @@ namespace ImagesXaf.Module.Win.Controllers
         public class ListViewController : ViewController
         {
 
-            Graphics graphics;
+         //   Graphics graphics;
             Image mainImage = null;
             CompositeView parentView;
-            XafPictureEdit pEdit;
+         //   XafPictureEdit pEdit;
 
             public ListViewController()
             {
@@ -66,13 +66,13 @@ namespace ImagesXaf.Module.Win.Controllers
             {
                 if (Frame is NestedFrame)
                 {
-                    parentView = ((NestedFrame)Frame).ViewItem.View;
-                    ImagePropertyEditor imageEditor = parentView.FindItem("Photo") as ImagePropertyEditor;
-                    if (imageEditor != null)
-                    {
-                        var ctrl = imageEditor.Control;
-                        pEdit = (XafPictureEdit)ctrl;
-                    }
+                    //parentView = ((NestedFrame)Frame).ViewItem.View;
+                    //ImagePropertyEditor imageEditor = parentView.FindItem("Photo") as ImagePropertyEditor;
+                    //if (imageEditor != null)
+                    //{
+                    //    var ctrl = imageEditor.Control;
+                    //    pEdit = (XafPictureEdit)ctrl;
+                    //}
                 }
             }
 
@@ -109,33 +109,33 @@ namespace ImagesXaf.Module.Win.Controllers
             }
             private void UpdateDetailViewImage()
             {
-                if (pEdit != null && pEdit.Image != null)
-                {
-                    if (Frame is NestedFrame)
-                    {
+                //if (pEdit != null && pEdit.Image != null)
+                //{
+                //    if (Frame is NestedFrame)
+                //    {
 
-                        Pen pen = new Pen(Color.Red, 3);
+                //        Pen pen = new Pen(Color.Red, 3);
 
-                        if (View.SelectedObjects.Count > 0)
-                        {
-                            foreach (OpisZdjecia opis in View.SelectedObjects)
-                            {
-                                    var marker = new RectangleMarker(pEdit, new Rectangle(opis.XPos - 50, opis.YPos, 100, 100));
-                                //    rectangleMarkers.Add(marker);
-                            }
+                //        if (View.SelectedObjects.Count > 0)
+                //        {
+                //            foreach (OpisZdjecia opis in View.SelectedObjects)
+                //            {
+                //                    var marker = new RectangleMarker(pEdit, new Rectangle(opis.XPos - 50, opis.YPos, 100, 100));
+                //                //    rectangleMarkers.Add(marker);
+                //            }
 
-                        }
-                        else
+                //        }
+                //        else
 
-                        {
-                            if (CurrentObject != null)
-                            {
-                                graphics.DrawEllipse(pen, CurrentObject.XPos - 50, CurrentObject.YPos - 50, 100, 100);
-                                //   ((NestedFrame)Frame).ViewItem.View.Caption = CurrentObject.Name;
-                            }
-                        }
-                    }
-                }
+                //        {
+                //            if (CurrentObject != null)
+                //            {
+                //                graphics.DrawEllipse(pen, CurrentObject.XPos - 50, CurrentObject.YPos - 50, 100, 100);
+                //                //   ((NestedFrame)Frame).ViewItem.View.Caption = CurrentObject.Name;
+                //            }
+                //        }
+                //    }
+                //}
             }
         }
     }
