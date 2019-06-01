@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Title="ImagesXaf">
+  <NavigationItems>
+    <Items>
+      <Item Id="Default">
+        <Items>
+          <Item Id="@e7ee4889-49bb-4e54-a6d6-dc31b0a53196" ViewId="Person_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="18.2.7.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <DetailView Id="Osoba_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100" Direction="Horizontal">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="37.487231869254344">
+            <LayoutGroup Id="Person" Index="0" RelativeSize="12.81708945260347" ShowCaption="False">
+              <LayoutGroup Id="Person_col1" RelativeSize="48.77384196185286">
+                <LayoutItem Id="FirstName" RelativeSize="37.5" />
+                <LayoutItem Id="LastName" RelativeSize="27.083333333333332" />
+                <LayoutItem Id="MiddleName" RelativeSize="35.416666666666664" />
+              </LayoutGroup>
+              <LayoutGroup Id="Person_col2" RelativeSize="51.22615803814714">
+                <LayoutItem Id="Birthday" RelativeSize="37.5" />
+                <LayoutItem Id="FullName" RelativeSize="27.083333333333332" />
+                <LayoutItem Id="Email" RelativeSize="35.416666666666664" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Party" Caption="Party" Index="1" RelativeSize="87.182910547396531">
+              <LayoutGroup Id="Item1" ShowCaption="False" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="Address1" ViewItem="Address1" Index="0" RelativeSize="5.2067381316998471" IsNewNode="True" />
+                <LayoutItem Id="Address2" ViewItem="Address2" Index="1" RelativeSize="3.9816232771822357" IsNewNode="True" />
+                <LayoutItem Id="DisplayName" ViewItem="DisplayName" Index="2" RelativeSize="3.9816232771822357" IsNewNode="True" />
+                <TabbedGroup Id="Tabs" Index="3" RelativeSize="86.830015313935675" IsNewNode="True">
+                  <LayoutGroup Id="OpisZdjeciaCollection" ShowCaption="True" Caption="Opis Zdjecia Collection" Index="0" RelativeSize="100" IsNewNode="True">
+                    <LayoutItem Id="OpisZdjeciaCollection" ViewItem="OpisZdjeciaCollection" Index="0" RelativeSize="100" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="PhoneNumbers" ShowCaption="True" Caption="Phone Numbers" Index="1" RelativeSize="100" IsNewNode="True">
+                    <LayoutItem Id="PhoneNumbers" ViewItem="PhoneNumbers" Index="0" RelativeSize="100" IsNewNode="True" />
+                  </LayoutGroup>
+                </TabbedGroup>
+              </LayoutGroup>
+              <LayoutItem Id="Address1" Removed="True" />
+              <LayoutItem Id="Address2" Removed="True" />
+              <LayoutItem Id="DisplayName" Removed="True" />
+              <LayoutItem Id="Photo" RelativeSize="5.5555555555555554" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutItem Id="Photo" ViewItem="Photo" Index="1" RelativeSize="62.512768130745656" ShowCaption="False" IsNewNode="True" />
+          <TabbedGroup Id="Tabs" RelativeSize="59.145527369826432" Removed="True">
+            <LayoutGroup Id="OpisZdjeciaCollection" RelativeSize="100">
+              <LayoutItem Id="OpisZdjeciaCollection" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="PhoneNumbers" RelativeSize="100">
+              <LayoutItem Id="PhoneNumbers" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Person_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100" Direction="Vertical">
+          <LayoutGroup Id="Person" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True" Removed="True">
+            <LayoutGroup Id="Person_col1" ShowCaption="False" Index="0" RelativeSize="45.426594926979249" IsNewNode="True">
+              <LayoutItem Id="FullName" ViewItem="FullName" Index="0" RelativeSize="2.7522935779816513" IsNewNode="True" />
+              <LayoutItem Id="FirstName" ViewItem="FirstName" Index="1" RelativeSize="1.9877675840978593" IsNewNode="True" />
+              <LayoutItem Id="MiddleName" ViewItem="MiddleName" Index="2" RelativeSize="1.9877675840978593" IsNewNode="True" />
+              <LayoutItem Id="LastName" ViewItem="LastName" Index="3" RelativeSize="1.9877675840978593" IsNewNode="True" />
+              <LayoutItem Id="DisplayName" ViewItem="DisplayName" Index="4" RelativeSize="1.9877675840978593" IsNewNode="True" />
+              <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="5" RelativeSize="11.697247706422019" IsNewNode="True">
+                <LayoutItem Id="Email" ViewItem="Email" Index="0" RelativeSize="29.032258064516128" IsNewNode="True" />
+                <LayoutItem Id="Birthday" ViewItem="Birthday" Index="1" RelativeSize="20.967741935483872" IsNewNode="True" />
+                <LayoutItem Id="Address1" ViewItem="Address1" Index="2" RelativeSize="20.967741935483872" IsNewNode="True" />
+                <LayoutItem Id="Address2" ViewItem="Address2" Index="3" RelativeSize="29.032258064516128" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutItem Id="PhoneNumbers" ViewItem="PhoneNumbers" Index="6" RelativeSize="77.5993883792049" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutItem Id="Photo" ShowCaption="False" ViewItem="Photo" Index="1" RelativeSize="54.573405073020751" IsNewNode="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="PhoneNumbers_Group" Caption="Phone Numbers" RelativeSize="81.345565749235476" Removed="True">
+            <LayoutItem Id="PhoneNumbers" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

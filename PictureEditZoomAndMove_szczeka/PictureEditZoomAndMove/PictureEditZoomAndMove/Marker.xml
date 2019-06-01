@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-16"?>
 <Rectangle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Location>
-    <X>7067</X>
-    <Y>77</Y>
+    <X>16920</X>
+    <Y>878</Y>
   </Location>
   <Size>
-    <Width>486</Width>
-    <Height>384</Height>
+    <Width>903</Width>
+    <Height>714</Height>
   </Size>
-  <X>7067</X>
-  <Y>77</Y>
-  <Width>486</Width>
-  <Height>384</Height>
+  <X>16920</X>
+  <Y>878</Y>
+  <Width>903</Width>
+  <Height>714</Height>
 </Rectangle>

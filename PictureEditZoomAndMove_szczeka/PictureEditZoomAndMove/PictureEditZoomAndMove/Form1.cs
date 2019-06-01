@@ -46,7 +46,7 @@ namespace PictureEditZoomAndMove
         {
             PictureEditViewInfo viewInfo = pictureEdit.GetViewInfo() as PictureEditViewInfo;
             if (!viewInfo.PictureScreenBounds.Contains(e.Location)) return;
-            rectangleMarkers.Add(new RectangleMarker(pictureEdit, new Rectangle(e.X - 50, e.Y, 100, 100)));
+            rectangleMarkers.Add(new RectangleMarker(pictureEdit, new Rectangle(e.X - 50, e.Y -50, 100, 100)));
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
