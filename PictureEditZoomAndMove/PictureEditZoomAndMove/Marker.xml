@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-16"?>
+<Rectangle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Location>
+    <X>412</X>
+    <Y>75</Y>
+  </Location>
+  <Size>
+    <Width>100</Width>
+    <Height>100</Height>
+  </Size>
+  <X>412</X>
+  <Y>75</Y>
+  <Width>100</Width>
+  <Height>100</Height>
+</Rectangle>
