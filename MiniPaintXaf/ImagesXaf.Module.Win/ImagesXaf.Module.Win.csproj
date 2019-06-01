@@ -131,6 +131,7 @@
     <Compile Include="Controllers\ListViewController.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controllers\PictureEditController.cs" />
     <Compile Include="Controllers\PictureEditViewController.cs" />
     <Compile Include="MarkerRectangles\CircleMarker.cs" />
     <Compile Include="MarkerRectangles\RectangleMarker.cs" />
