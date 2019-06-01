@@ -52,7 +52,8 @@ namespace PictureEditZoomAndMove
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             string path = environmentPath + markerFileName;
-            File.WriteAllText(path, Serialization.SerializeObject(rectangleMarkers.FirstOrDefault().DrawingRectangle));
+            var res = Serialization.SerializeObject(rectangleMarkers.FirstOrDefault().DrawingRectangle);
+            File.WriteAllText(path, res);
         }
 
         private Rectangle LoadMarkerFromFile()

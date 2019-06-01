@@ -82,7 +82,7 @@ namespace PictureEditZoomAndMove.MarkerRectangles
             if (Editable)
             {
                 mainPictureEdit.MouseDown += new MouseEventHandler(mPictureEdit_MouseDown);
-                mainPictureEdit.MouseUp += new MouseEventHandler(mPictureEdit_MouseUp);
+                mainPictureEdit.MouseUp   += new MouseEventHandler(mPictureEdit_MouseUp);
                 mainPictureEdit.MouseMove += new MouseEventHandler(mPictureEdit_MouseMove);
             }
             mainPictureEdit.PaintEx += MainPictureEdit_PaintEx;
