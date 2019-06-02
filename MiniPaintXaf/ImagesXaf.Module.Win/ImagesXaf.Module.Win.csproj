@@ -133,7 +133,7 @@
     </Compile>
     <Compile Include="Controllers\PictureEditController.cs" />
     <Compile Include="Controllers\PictureEditViewController.cs" />
-    <Compile Include="Editors\Class1.cs" />
+    <Compile Include="Editors\CustomImageEditor.cs" />
     <Compile Include="MarkerRectangles\CircleMarker.cs" />
     <Compile Include="MarkerRectangles\RectangleMarker.cs" />
     <Compile Include="MarkerRectangles\RectangleResizePoints.cs" />

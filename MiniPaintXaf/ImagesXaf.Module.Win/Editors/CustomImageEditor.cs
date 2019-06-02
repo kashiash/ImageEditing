@@ -13,6 +13,7 @@ namespace ImagesXaf.Module.Win.Editors
     using DevExpress.ExpressApp.Model;
     using DevExpress.ExpressApp.Win.Editors;
     using DevExpress.XtraEditors.ViewInfo;
+    using ImagesXaf.Module.BusinessObjects;
     using PictureEditZoomAndMove.MarkerRectangles;
 
     [PropertyEditor(typeof(byte[]), false)]
@@ -45,11 +46,12 @@ namespace ImagesXaf.Module.Win.Editors
                 var businessObject = CurrentObject;
        //         control.OpenDialogFilter = string.Format("Custom filter for Bitmaps (*.bmp)|*{0}*.bmp", businessObject.ID);
             }
-
+            InitPhotoEditor();
             control.ImageChanged += OnImageChanged;
             control.MouseDoubleClick += EventPictureEditXrayOnDoubleClick;
             return control;
         }
+
 
         private void EventPictureEditXrayOnDoubleClick(object sender, MouseEventArgs e)
         {
@@ -71,6 +73,10 @@ namespace ImagesXaf.Module.Win.Editors
                 {
                     control.ReadOnly = false;
                     control.Image = (Image)PropertyValue;
+                    if (CurrentObject is Osoba)
+                    {
+                        loadSavedMarkers(((Osoba)CurrentObject).OpisZdjeciaCollection);
+                    }
                 }
                 else
                 {
@@ -102,7 +108,7 @@ namespace ImagesXaf.Module.Win.Editors
             }
         }
 
-        private void InitPhotoEditor(ImagePropertyEditor imageEditor)
+        private void InitPhotoEditor()
         {
             rectangleMarkers = new List<RectangleMarker>();
 
@@ -128,7 +134,14 @@ namespace ImagesXaf.Module.Win.Editors
             }
 
         }
-
+        void loadSavedMarkers(DevExpress.Xpo.XPCollection<OpisZdjecia> opisZdjeciaCollection)
+        {
+            foreach (var opis in opisZdjeciaCollection)
+            {
+                var marker = new RectangleMarker(control, new Rectangle(opis.XPos - 50, opis.YPos, 100, 100));
+                rectangleMarkers.Add(marker);
+            }
+        }
         private void control_Click(object sender, MouseEventArgs e)
         {
           //  throw new NotImplementedException();

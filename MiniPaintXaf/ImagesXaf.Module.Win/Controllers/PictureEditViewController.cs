@@ -53,7 +53,7 @@ namespace ImagesXaf.Module.Win.Controllers
 
 
 
-          
+
         }
         protected override void OnDeactivated()
         {
@@ -69,12 +69,11 @@ namespace ImagesXaf.Module.Win.Controllers
                 TryInitializePictureItem();
             }
 
-          
+
         }
 
         public void TryInitializePictureItem()
         {
-
             ImagePropertyEditor imageEditor = View.FindItem("Photo") as ImagePropertyEditor;
             if (imageEditor != null)
             {
@@ -98,29 +97,28 @@ namespace ImagesXaf.Module.Win.Controllers
 
         private void InitPhotoEditor(ImagePropertyEditor imageEditor)
         {
-            rectangleMarkers = new List<RectangleMarker>();
-            var ctrl = imageEditor.Control;
-            pEdit = (XafPictureEdit)ctrl;
-            if (pEdit != null)
-            {
-                pEdit.LoadCompleted += LoadCompleted;
-                pEdit.MouseClick += PEdit_Click;
-                //    pEdit.Paint += Paint;
-                pEdit.Cursor = System.Windows.Forms.Cursors.Default;
-             //   pEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-                pEdit.Properties.AllowScrollViaMouseDrag = false;
-                pEdit.Properties.AllowScrollOnMouseWheel = DevExpress.Utils.DefaultBoolean.True;
-                pEdit.Properties.AllowZoomOnMouseWheel = DevExpress.Utils.DefaultBoolean.True;
-                pEdit.Properties.Appearance.BackColor = System.Drawing.Color.Black;
-                pEdit.Properties.Appearance.Options.UseBackColor = true;
-                pEdit.Properties.ShowMenu = true;
-                pEdit.Properties.ShowScrollBars = true;
-                pEdit.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-                pEdit.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Never;
-                pEdit.Properties.ShowZoomSubMenu = DevExpress.Utils.DefaultBoolean.True;
-                pEdit.Properties.ZoomingOperationMode = DevExpress.XtraEditors.Repository.ZoomingOperationMode.MouseWheel;
-
-            }
+            //rectangleMarkers = new List<RectangleMarker>();
+            //var ctrl = imageEditor.Control;
+            //pEdit = (XafPictureEdit)ctrl;
+            //if (pEdit != null)
+            //{
+            //    pEdit.LoadCompleted += LoadCompleted;
+            //    pEdit.MouseClick += PEdit_Click;
+            //    //    pEdit.Paint += Paint;
+            //    pEdit.Cursor = System.Windows.Forms.Cursors.Default;
+            //    //   pEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            //    pEdit.Properties.AllowScrollViaMouseDrag = false;
+            //    pEdit.Properties.AllowScrollOnMouseWheel = DevExpress.Utils.DefaultBoolean.True;
+            //    pEdit.Properties.AllowZoomOnMouseWheel = DevExpress.Utils.DefaultBoolean.True;
+            //    pEdit.Properties.Appearance.BackColor = System.Drawing.Color.Black;
+            //    pEdit.Properties.Appearance.Options.UseBackColor = true;
+            //    pEdit.Properties.ShowMenu = true;
+            //    pEdit.Properties.ShowScrollBars = true;
+            //    pEdit.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            //    pEdit.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Never;
+            //    pEdit.Properties.ShowZoomSubMenu = DevExpress.Utils.DefaultBoolean.True;
+            //    pEdit.Properties.ZoomingOperationMode = DevExpress.XtraEditors.Repository.ZoomingOperationMode.MouseWheel;
+            //}
 
         }
 
@@ -161,20 +159,11 @@ namespace ImagesXaf.Module.Win.Controllers
 
         }
 
-      void  loadSavedMarkers()
-        {
-            foreach (var opis in currentRec.OpisZdjeciaCollection)
-            {
-                var marker = new RectangleMarker(pEdit, new Rectangle(opis.XPos - 50, opis.YPos, 100, 100));
-                rectangleMarkers.Add(marker);
-            }
-        }
+
 
         private void Resize(object sender, EventArgs e)
         {
-
             UpdateGraphics();
-
         }
 
         private void ImageChanged(object sender, EventArgs e)

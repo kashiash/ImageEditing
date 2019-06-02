@@ -1,2 +1,14 @@
-﻿<?xml version="1.0" ?>
-<Application />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="18.2.7.0" IsNewNode="True" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="18.2.7.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <DetailView Id="Osoba_DetailView">
+      <Items>
+        <PropertyEditor Id="Photo" PropertyEditorType="ImagesXaf.Module.Win.Editors.CustomImageEditor" />
+      </Items>
+    </DetailView>
+  </Views>
+</Application>
